@@ -12,23 +12,20 @@
     "snabbdom": "^3"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^29",
-    "@rollup/plugin-node-resolve": "^16",
-    "@rollup/plugin-typescript": "^12",
-    "@rollup/plugin-terser": "^1",
     "@types/page": "^1",
     "http-server": "^14",
-    "prettier": "^2",
-    "rollup": "^4",
-    "rollup-plugin-scss": "^3",
     "sass": "^1",
     "tslib": "^2",
-    "typescript": "^4"
+    "typescript": "^4",
+    "vite": "^5",
+    "oxfmt": "^0.48.0"
   },
   "scripts": {
-    "build": "rollup --config",
-    "watch": "rollup --config --watch",
-    "prod": "rollup --config --config-prod",
-    "serve": "http-server"
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "prod": "vite build",
+    "dev": "vite",
+    "serve": "vite preview",
+    "format": "oxfmt ."
   }
 }
