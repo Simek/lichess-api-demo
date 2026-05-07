@@ -1,4 +1,5 @@
 import { VNode } from 'snabbdom';
+
 import { Ctrl } from './ctrl';
 
 export type Page = 'home' | 'game' | 'seek' | 'challenge' | 'tv';

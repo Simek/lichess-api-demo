@@ -1,12 +1,12 @@
 import { Auth } from './auth';
+import ChallengeCtrl from './challenge';
 import { GameCtrl } from './game';
 import { Page } from './interfaces';
 import { Stream } from './ndJsonStream';
-import { formData } from './util';
 import OngoingGames from './ongoingGames';
 import { SeekCtrl } from './seek';
-import ChallengeCtrl from './challenge';
 import TvCtrl from './tv';
+import { formData } from './util';
 
 export class Ctrl {
   auth: Auth = new Auth();
@@ -71,7 +71,7 @@ export class Ctrl {
         time: minutes,
         increment,
       },
-      this
+      this,
     );
     this.page = 'seek';
     this.redraw();
@@ -85,7 +85,7 @@ export class Ctrl {
         'clock.limit': minutes * 60,
         'clock.increment': increment,
       },
-      this
+      this,
     );
     this.page = 'challenge';
     this.redraw();

@@ -1,29 +1,30 @@
 import { Color } from 'chessground/types';
 import { opposite } from 'chessground/util';
 import { h } from 'snabbdom';
+
 import { GameCtrl } from '../game';
 import { Renderer } from '../interfaces';
-import { clockContent } from './clock';
-import '../../scss/_game.scss';
 import { renderBoard, renderPlayer } from './board';
 
-export const renderGame: (ctrl: GameCtrl) => Renderer = ctrl => _ =>
-  [
-    h(
-      `div.game-page.game-page--${ctrl.game.id}`,
-      {
-        hook: {
-          destroy: ctrl.onUnmount,
-        },
+import '../../scss/_game.scss';
+import { clockContent } from './clock';
+
+export const renderGame: (ctrl: GameCtrl) => Renderer = ctrl => _ => [
+  h(
+    `div.game-page.game-page--${ctrl.game.id}`,
+    {
+      hook: {
+        destroy: ctrl.onUnmount,
       },
-      [
-        renderGamePlayer(ctrl, opposite(ctrl.pov)),
-        renderBoard(ctrl),
-        renderGamePlayer(ctrl, ctrl.pov),
-        ctrl.playing() ? renderButtons(ctrl) : renderState(ctrl),
-      ]
-    ),
-  ];
+    },
+    [
+      renderGamePlayer(ctrl, opposite(ctrl.pov)),
+      renderBoard(ctrl),
+      renderGamePlayer(ctrl, ctrl.pov),
+      ctrl.playing() ? renderButtons(ctrl) : renderState(ctrl),
+    ],
+  ),
+];
 
 const renderButtons = (ctrl: GameCtrl) =>
   h('div.btn-group.mt-4', [
@@ -37,7 +38,7 @@ const renderButtons = (ctrl: GameCtrl) =>
           },
         },
       },
-      ctrl.chess.fullmoves > 1 ? 'Resign' : 'Abort'
+      ctrl.chess.fullmoves > 1 ? 'Resign' : 'Abort',
     ),
   ]);
 
@@ -47,7 +48,9 @@ const renderGamePlayer = (ctrl: GameCtrl, color: Color) => {
   const p = ctrl.game[color];
   const clock = clockContent(
     ctrl.timeOf(color),
-    color == ctrl.chess.turn && ctrl.chess.fullmoves > 1 && ctrl.playing() ? ctrl.lastUpdateAt - Date.now() : 0
+    color == ctrl.chess.turn && ctrl.chess.fullmoves > 1 && ctrl.playing()
+      ? ctrl.lastUpdateAt - Date.now()
+      : 0,
   );
   return renderPlayer(ctrl, color, clock, p.name, p.title, p.rating, p.aiLevel);
 };

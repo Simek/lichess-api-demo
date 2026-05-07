@@ -1,13 +1,14 @@
-import { Ctrl } from './ctrl';
-import { Game } from './interfaces';
 import { Api as CgApi } from 'chessground/api';
 import { Config as CgConfig } from 'chessground/config';
-import { Stream } from './ndJsonStream';
 import { Color, Key } from 'chessground/types';
-import { opposite, parseUci } from 'chessops/util';
 import { Chess, defaultSetup } from 'chessops';
-import { makeFen, parseFen } from 'chessops/fen';
 import { chessgroundDests } from 'chessops/compat';
+import { makeFen, parseFen } from 'chessops/fen';
+import { opposite, parseUci } from 'chessops/util';
+
+import { Ctrl } from './ctrl';
+import { Game } from './interfaces';
+import { Stream } from './ndJsonStream';
 
 export interface BoardCtrl {
   chess: Chess;
@@ -25,7 +26,11 @@ export class GameCtrl implements BoardCtrl {
   ground?: CgApi;
   redrawInterval: ReturnType<typeof setInterval>;
 
-  constructor(game: Game, readonly stream: Stream, private root: Ctrl) {
+  constructor(
+    game: Game,
+    readonly stream: Stream,
+    private root: Ctrl,
+  ) {
     this.game = game;
     this.pov = this.game.black.id == this.root.auth.me?.id ? 'black' : 'white';
     this.onUpdate();
@@ -38,7 +43,8 @@ export class GameCtrl implements BoardCtrl {
   };
 
   private onUpdate = () => {
-    const setup = this.game.initialFen == 'startpos' ? defaultSetup() : parseFen(this.game.initialFen).unwrap();
+    const setup =
+      this.game.initialFen == 'startpos' ? defaultSetup() : parseFen(this.game.initialFen).unwrap();
     this.chess = Chess.fromSetup(setup).unwrap();
     const moves = this.game.state.moves.split(' ').filter((m: string) => m);
     moves.forEach((uci: string) => this.chess.play(parseUci(uci)!));

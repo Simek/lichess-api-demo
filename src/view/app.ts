@@ -1,10 +1,11 @@
 import { h, VNode } from 'snabbdom';
+
 import { Ctrl } from '../ctrl';
 import { Renderer } from '../interfaces';
-import layout from './layout';
 import { renderChallenge } from './challenge';
 import { renderGame } from './game';
 import { renderHome } from './home';
+import layout from './layout';
 import { renderSeek } from './seek';
 import { renderTv } from './tv';
 
@@ -28,4 +29,8 @@ const renderNotFound: Renderer = _ => [h('h1', 'Not found')];
 export const loadingBody = () => h('div.loading', spinner());
 
 export const spinner = () =>
-  h('div.spinner-border.text-primary', { attrs: { role: 'status' } }, h('span.visually-hidden', 'Loading...'));
+  h(
+    'div.spinner-border.text-primary',
+    { attrs: { role: 'status' } },
+    h('span.visually-hidden', 'Loading...'),
+  );

@@ -42,5 +42,6 @@ const correspondence = (ms: number) => {
 };
 
 const pad2 = (num: number) => (num < 10 ? '0' : '') + num;
-const prefixInteger = (num: number, length: number): string => (num / Math.pow(10, length)).toFixed(length).slice(2);
+const prefixInteger = (num: number, length: number): string =>
+  (num / Math.pow(10, length)).toFixed(length).slice(2);
 const bold = (x: string) => `<b>${x}</b>`;
