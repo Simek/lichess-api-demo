@@ -1,8 +1,8 @@
 import { Chessground } from 'chessground';
-import { Color } from 'chessops';
-import { h, VNode } from 'snabbdom';
+import { type Color } from 'chessops';
+import { h, type VNode } from 'snabbdom';
 
-import { BoardCtrl } from '../game';
+import { type BoardCtrl } from '../game';
 
 export const renderBoard = (ctrl: BoardCtrl) =>
   h(
@@ -33,7 +33,7 @@ export const renderPlayer = (
     'div.game-page__player',
     {
       class: {
-        turn: ctrl.chess.turn == color,
+        turn: ctrl.chess.turn === color,
       },
     },
     [

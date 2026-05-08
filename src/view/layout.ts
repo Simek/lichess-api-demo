@@ -1,14 +1,14 @@
-import { h, VNode } from 'snabbdom';
+import { h, type VNode } from 'snabbdom';
 
-import { Me } from '../auth';
-import { Ctrl } from '../ctrl';
-import { MaybeVNodes } from '../interfaces';
+import { type Me } from '../auth';
+import { type Ctrl } from '../ctrl';
+import { type MaybeVNodes } from '../interfaces';
 import { href } from '../routing';
 import colorpicker from './colorpicker';
 
 import '../../scss/_navbar.scss';
 
-export default function (ctrl: Ctrl, body: MaybeVNodes): VNode {
+export default function Layout(ctrl: Ctrl, body: MaybeVNodes): VNode {
   return h('body', [renderNavBar(ctrl), h('div.container', body)]);
 }
 
@@ -43,7 +43,7 @@ const renderNavBar = (ctrl: Ctrl) =>
             h(
               'a.nav-link',
               {
-                class: { active: ctrl.page == 'tv' },
+                class: { active: ctrl.page === 'tv' },
                 attrs: href('/tv'),
               },
               'Watch TV',

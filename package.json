@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@bity/oauth2-auth-code-pkce": "^2",
+    "@types/node": "^24.12.3",
     "bootstrap": "^5.3.8",
     "chessground": "^9.2.1",
     "chessops": "^0.15.0",
@@ -15,6 +16,8 @@
     "@types/page": "^1.11.9",
     "http-server": "^14.1.1",
     "oxfmt": "^0.48.0",
+    "oxlint": "^1.63.0",
+    "oxlint-tsgolint": "^0.22.1",
     "sass": "^1.99.0",
     "typescript": "^6.0.3",
     "vite": "^8.0.11"
@@ -25,6 +28,8 @@
     "prod": "vite build",
     "dev": "vite",
     "serve": "vite preview",
-    "format": "oxfmt"
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "tsc": "tsc --noEmit"
   }
 }

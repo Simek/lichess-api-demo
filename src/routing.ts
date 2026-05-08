@@ -1,15 +1,19 @@
 import page from 'page';
 
-import { Ctrl } from './ctrl';
+import { type Ctrl } from './ctrl';
 
-export default function (ctrl: Ctrl) {
+export default function Routing(ctrl: Ctrl) {
   page.base(BASE_PATH);
   page('/', async ctx => {
-    if (ctx.querystring.includes('code=liu_')) history.pushState({}, '', BASE_PATH || '/');
+    if (ctx.querystring.includes('code=liu_')) {
+      history.pushState({}, '', BASE_PATH || '/');
+    }
     ctrl.openHome();
   });
   page('/login', async _ => {
-    if (ctrl.auth.me) return page('/');
+    if (ctrl.auth.me) {
+      return page('/');
+    }
     await ctrl.auth.login();
   });
   page('/logout', async _ => {

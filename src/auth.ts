@@ -1,4 +1,4 @@
-import { HttpClient, OAuth2AuthCodePKCE } from '@bity/oauth2-auth-code-pkce';
+import { type HttpClient, OAuth2AuthCodePKCE } from '@bity/oauth2-auth-code-pkce';
 
 import { readStream } from './ndJsonStream';
 import { BASE_PATH } from './routing';
@@ -12,7 +12,7 @@ export interface Me {
   id: string;
   username: string;
   httpClient: HttpClient; // with pre-set Authorization header
-  perfs: { [key: string]: any };
+  perfs: Record<string, any>;
 }
 
 export class Auth {
@@ -30,14 +30,18 @@ export class Auth {
   async init() {
     try {
       const accessContext = await this.oauth.getAccessToken();
-      if (accessContext) await this.authenticate();
+      if (accessContext) {
+        await this.authenticate();
+      }
     } catch (err) {
       console.error(err);
     }
     if (!this.me) {
       try {
         const hasAuthCode = await this.oauth.isReturningFromAuthServer();
-        if (hasAuthCode) await this.authenticate();
+        if (hasAuthCode) {
+          await this.authenticate();
+        }
       } catch (err) {
         console.error(err);
       }
@@ -49,7 +53,9 @@ export class Auth {
   }
 
   async logout() {
-    if (this.me) await this.me.httpClient(`${lichessHost}/api/token`, { method: 'DELETE' });
+    if (this.me) {
+      await this.me.httpClient(`${lichessHost}/api/token`, { method: 'DELETE' });
+    }
     localStorage.clear();
     this.me = undefined;
   }
@@ -61,7 +67,9 @@ export class Auth {
       ...(await res.json()),
       httpClient,
     };
-    if (me.error) throw me.error;
+    if (me.error) {
+      throw me.error;
+    }
     this.me = me;
   };
 
