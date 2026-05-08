@@ -1,10 +1,11 @@
-import { Chess, Color } from 'chessops';
-import { Ctrl } from './ctrl';
 import { Api as CgApi } from 'chessground/api';
-import { Stream } from './ndJsonStream';
-import { parseFen } from 'chessops/fen';
 import { Key } from 'chessground/types';
+import { Chess, Color } from 'chessops';
+import { parseFen } from 'chessops/fen';
+
+import { Ctrl } from './ctrl';
 import { BoardCtrl } from './game';
+import { Stream } from './ndJsonStream';
 
 interface TvGame {
   id: string;
@@ -29,7 +30,11 @@ export default class TvCtrl implements BoardCtrl {
   chess: Chess = Chess.default();
   lastUpdateAt: number = Date.now();
   redrawInterval: ReturnType<typeof setInterval>;
-  constructor(readonly stream: Stream, public game: TvGame, readonly root: Ctrl) {
+  constructor(
+    readonly stream: Stream,
+    public game: TvGame,
+    readonly root: Ctrl,
+  ) {
     this.onUpdate();
     this.redrawInterval = setInterval(root.redraw, 100);
     this.awaitClose();

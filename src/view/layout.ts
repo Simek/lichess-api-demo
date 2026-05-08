@@ -1,9 +1,11 @@
 import { h, VNode } from 'snabbdom';
+
 import { Me } from '../auth';
 import { Ctrl } from '../ctrl';
 import { MaybeVNodes } from '../interfaces';
 import { href } from '../routing';
 import colorpicker from './colorpicker';
+
 import '../../scss/_navbar.scss';
 
 export default function (ctrl: Ctrl, body: MaybeVNodes): VNode {
@@ -18,7 +20,7 @@ const renderNavBar = (ctrl: Ctrl) =>
         {
           attrs: href('/'),
         },
-        'Lichess API Demo'
+        'Lichess API Demo',
       ),
       h(
         'button.navbar-toggler',
@@ -32,7 +34,7 @@ const renderNavBar = (ctrl: Ctrl) =>
             'aria-label': 'Toggle navigation',
           },
         },
-        h('span.navbar-toggler-icon')
+        h('span.navbar-toggler-icon'),
       ),
       h('div#navbarSupportedContent.collapse.navbar-collapse', [
         h('ul.navbar-nav.me-auto.mb-lg-0"', [
@@ -44,8 +46,8 @@ const renderNavBar = (ctrl: Ctrl) =>
                 class: { active: ctrl.page == 'tv' },
                 attrs: href('/tv'),
               },
-              'Watch TV'
-            )
+              'Watch TV',
+            ),
           ),
         ]),
         h('ul.navbar-nav', [colorpicker(), ctrl.auth.me ? userNav(ctrl.auth.me) : anonNav()]),
@@ -65,7 +67,7 @@ const userNav = (me: Me) =>
           'aria-expanded': false,
         },
       },
-      me.username
+      me.username,
     ),
     h(
       'ul.dropdown-menu',
@@ -82,10 +84,10 @@ const userNav = (me: Me) =>
             {
               attrs: href('/logout'),
             },
-            'Log out'
-          )
+            'Log out',
+          ),
         ),
-      ]
+      ],
     ),
   ]);
 
@@ -97,6 +99,6 @@ const anonNav = () =>
       {
         attrs: href('/login'),
       },
-      'Login with Lichess'
-    )
+      'Login with Lichess',
+    ),
   );

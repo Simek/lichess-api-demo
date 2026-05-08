@@ -1,5 +1,6 @@
-import { Ctrl } from './ctrl';
 import page from 'page';
+
+import { Ctrl } from './ctrl';
 
 export default function (ctrl: Ctrl) {
   page.base(BASE_PATH);

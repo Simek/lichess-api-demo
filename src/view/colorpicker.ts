@@ -14,7 +14,7 @@ export default function colorpicker() {
       hook: {
         insert: () => setColor(localStorage.getItem('board.color') || defaultColor),
       },
-    })
+    }),
   );
 }
 

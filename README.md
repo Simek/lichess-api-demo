@@ -20,8 +20,8 @@ This is an example for a fully client side OAuth app that uses various APIs.
 ## Run it on your machine
 
 1. `pnpm install`
-1. `pnpm run build`
-1. `pnpm run serve` or any other method to serve the app on http://localhost:8000
+1. `pnpm run dev` for local development, or `pnpm run build` for production output
+1. `pnpm run serve` to preview the production build on http://localhost:4173
 
 ## Points of interest
 

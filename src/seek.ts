@@ -1,10 +1,14 @@
+import page from 'page';
+
 import { Ctrl } from './ctrl';
 import { Stream } from './ndJsonStream';
 import { formData } from './util';
-import page from 'page';
 
 export class SeekCtrl {
-  constructor(readonly stream: Stream, readonly root: Ctrl) {
+  constructor(
+    readonly stream: Stream,
+    readonly root: Ctrl,
+  ) {
     this.awaitClose();
   }
 
@@ -22,7 +26,7 @@ export class SeekCtrl {
         method: 'post',
         body: formData(config),
       },
-      _ => {}
+      _ => {},
     );
     return new SeekCtrl(stream, root);
   };

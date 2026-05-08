@@ -1,6 +1,7 @@
 import { Chessground } from 'chessground';
 import { Color } from 'chessops';
 import { h, VNode } from 'snabbdom';
+
 import { BoardCtrl } from '../game';
 
 export const renderBoard = (ctrl: BoardCtrl) =>
@@ -15,8 +16,8 @@ export const renderBoard = (ctrl: BoardCtrl) =>
           },
         },
       },
-      'loading...'
-    )
+      'loading...',
+    ),
   );
 
 export const renderPlayer = (
@@ -26,7 +27,7 @@ export const renderPlayer = (
   name: string,
   title?: string,
   rating?: number,
-  aiLevel?: number
+  aiLevel?: number,
 ) => {
   return h(
     'div.game-page__player',
@@ -38,10 +39,13 @@ export const renderPlayer = (
     [
       h('div.game-page__player__user', [
         title && h('span.game-page__player__user__title.display-5', title),
-        h('span.game-page__player__user__name.display-5', aiLevel ? `Stockfish level ${aiLevel}` : name || 'Anon'),
+        h(
+          'span.game-page__player__user__name.display-5',
+          aiLevel ? `Stockfish level ${aiLevel}` : name || 'Anon',
+        ),
         h('span.game-page__player__user__rating', rating || ''),
       ]),
       h('div.game-page__player__clock.display-6', clock),
-    ]
+    ],
   );
 };

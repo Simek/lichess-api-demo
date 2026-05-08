@@ -1,5 +1,6 @@
-import { Game } from './interfaces';
 import page from 'page';
+
+import { Game } from './interfaces';
 
 export default class OngoingGames {
   games: Game[] = [];

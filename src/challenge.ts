@@ -1,10 +1,14 @@
+import page from 'page';
+
 import { Ctrl } from './ctrl';
 import { Stream } from './ndJsonStream';
 import { formData } from './util';
-import page from 'page';
 
 export default class ChallengeCtrl {
-  constructor(readonly stream: Stream, readonly root: Ctrl) {
+  constructor(
+    readonly stream: Stream,
+    readonly root: Ctrl,
+  ) {
     this.awaitClose();
   }
 
@@ -25,7 +29,7 @@ export default class ChallengeCtrl {
           keepAliveStream: true,
         }),
       },
-      _ => {}
+      _ => {},
     );
     return new ChallengeCtrl(stream, root);
   };

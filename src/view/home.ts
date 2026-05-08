@@ -1,5 +1,6 @@
 import { Chessground } from 'chessground';
 import { h } from 'snabbdom';
+
 import { Ctrl } from '../ctrl';
 import { Game, Renderer } from '../interfaces';
 import OngoingGames from '../ongoingGames';
@@ -16,7 +17,7 @@ const userHome = (ctrl: Ctrl) => [
           attrs: { type: 'button' },
           on: { click: ctrl.playAi },
         },
-        'Play the Lichess AI'
+        'Play the Lichess AI',
       ),
       h(
         'button.btn.btn-outline-primary.btn-lg',
@@ -24,7 +25,7 @@ const userHome = (ctrl: Ctrl) => [
           attrs: { type: 'button' },
           on: { click: () => ctrl.playMaia(10, 0) },
         },
-        'Play a casual 10+0 game with the maia1 BOT'
+        'Play a casual 10+0 game with the maia1 BOT',
       ),
       h(
         'button.btn.btn-outline-primary.btn-lg',
@@ -32,7 +33,7 @@ const userHome = (ctrl: Ctrl) => [
           attrs: { type: 'button' },
           on: { click: () => ctrl.playPool(10, 0) },
         },
-        'Play a rated 10+0 game with a random opponent'
+        'Play a rated 10+0 game with a random opponent',
       ),
     ]),
     h('h2.mt-5', 'Games in progress'),
@@ -74,9 +75,9 @@ const renderGameWidget = (game: Game) =>
             },
           },
         },
-        'board'
+        'board',
       ),
-    ]
+    ],
   );
 
 const anonHome = () => [
@@ -88,7 +89,7 @@ const anonHome = () => [
       {
         attrs: href('/login'),
       },
-      'Login with Lichess'
+      'Login with Lichess',
     ),
   ]),
 ];
@@ -104,8 +105,8 @@ const renderAbout = () =>
           {
             attrs: { href: 'https://github.com/lichess-org/api-demo' },
           },
-          'Source code of this demo'
-        )
+          'Source code of this demo',
+        ),
       ),
       h(
         'li',
@@ -114,8 +115,8 @@ const renderAbout = () =>
           {
             attrs: { href: 'https://github.com/lichess-org/api-demo#lichess-oauth-app-demo' },
           },
-          'README'
-        )
+          'README',
+        ),
       ),
       h(
         'li',
@@ -124,8 +125,8 @@ const renderAbout = () =>
           {
             attrs: { href: 'https://lichess.org/api' },
           },
-          'Lichess.org API documentation'
-        )
+          'Lichess.org API documentation',
+        ),
       ),
     ]),
     h('p', [
