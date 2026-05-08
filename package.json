@@ -25,7 +25,6 @@
   "scripts": {
     "build": "vite build",
     "watch": "vite build --watch",
-    "prod": "vite build",
     "dev": "vite",
     "serve": "vite preview",
     "lint": "oxlint",
