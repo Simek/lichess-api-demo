@@ -15,7 +15,7 @@ This is an example for a fully client side OAuth app that uses various APIs.
 
 ## Try it out
 
-[The demo app is hosted on Github Pages](https://lichess-org.github.io/api-demo/)
+[The demo app is hosted on GitHub Pages](https://lichess-org.github.io/api-demo/)
 
 ## Run it on your machine
 
