@@ -23,6 +23,7 @@ export class Ctrl {
   openHome = async () => {
     this.page = 'home';
     if (this.auth.me) {
+      this.redraw();
       await this.stream?.close();
       this.games.empty();
       this.stream = await this.auth.openStream('/api/stream/event', {}, msg => {
